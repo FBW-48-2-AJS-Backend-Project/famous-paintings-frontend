@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "react": "^17.0.2"
+  },
+  "name": "famous-paintings-frontend",
+  "description": "React/Frontend repository for Backend Project at Digital Career Institute",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FBW-48-2-AJS-Backend-Project/famous-paintings-frontend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FBW-48-2-AJS-Backend-Project/famous-paintings-frontend/issues"
+  },
+  "homepage": "https://github.com/FBW-48-2-AJS-Backend-Project/famous-paintings-frontend#readme"
+}
