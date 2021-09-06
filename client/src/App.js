@@ -18,6 +18,13 @@ function App() {
       year: 1920,
       price: "20 Million",
       img: "imageurl"
+    },
+    {
+      title: "The Scream",
+      artist: "Edvard Munch",
+      year: 1893,
+      price: "119 Million",
+      img: "imageurl"
     }
   ]);
 
