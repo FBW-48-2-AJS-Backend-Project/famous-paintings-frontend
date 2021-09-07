@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import PaintingContext from '../Context/PaintingContext';
 import PaintingItem from '../Components/PaintingItem';
+import Search from './Search';
 
 const PaintingList = () => {
     const paintings = useContext( PaintingContext );
@@ -17,6 +18,7 @@ const PaintingList = () => {
     return (
         <div>
             <h2>Paintings List</h2>
+            <Search/>
             <ul>
                 {paintings.map(item => {
                     return <li onClick={(e) => handleClick(item)}>
