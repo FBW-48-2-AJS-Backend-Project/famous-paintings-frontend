@@ -1,9 +1,13 @@
-import React from 'react'
+import React from 'react';
 
-const PaintingItem = () => {
+const PaintingItem = ({ painting }) => {
+    console.log(painting);
     return (
         <div>
-            <h3>Painting Item</h3>
+            <h3>{painting.title}</h3>
+            <p>{painting.artist}</p>
+            <p>{painting.year}</p>
+            <p>{painting.price}</p>
         </div>
     )
 }
