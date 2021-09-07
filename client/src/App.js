@@ -31,7 +31,7 @@ function App() {
   console.log(paintingsArray);
 
   return (
-    <PaintingContext.Provider value={ paintingsArray }>
+    <PaintingContext.Provider value={{ paintingsArray, setPaintingsArray }}>
       <div className="App">
         <Home/>
       </div>

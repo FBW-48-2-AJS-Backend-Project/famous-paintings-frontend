@@ -1,11 +1,31 @@
-import React from 'react'
+import React, { useState, useContext } from 'react';
+import PaintingContext from '../Context/PaintingContext';
 
-const Search = () => {
+const Search = ({ paintingsSearch, setPaintingsSearch, reset, setReset }) => {
+    const { paintingsArray, setPaintingsArray } = useContext( PaintingContext );
+    const [query, setQuery] = useState("");
+
+    const handleChange = e => {
+        const typedText = e.target.value;
+        setQuery( typedText );
+    };
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        const tempArr = paintingsArray.filter(item => {
+            return item.artist.toLowerCase().includes( query );
+        });
+        setPaintingsSearch( tempArr );
+        setQuery("");
+        setReset(false);
+    };
+    
     return (
-        <form>
+        <form onSubmit={(e) => handleSubmit(e)}>
             <label htmlFor="paintingSearch">Search by Artist: </label>
-            <input type="text" name="paintingSearch" id="paintingSearch" />
+            <input onChange={(e) => handleChange(e)} type="text" name="paintingSearch" id="paintingSearch" value={ query }/>
             <input type="submit" value="Search" />
+            <input onClick={() => setReset(!reset)} type="reset" value="Reset" />
         </form>
     )
 }
