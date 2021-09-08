@@ -1,0 +1,10 @@
+h1 {
+  background-color: lightgray;
+  color: peru;
+  border-radius: 15px;
+  width: 36rem;
+  margin-left: 40rem;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 20px;
+}
