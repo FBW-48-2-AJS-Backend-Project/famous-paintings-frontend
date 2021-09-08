@@ -22,11 +22,36 @@ function App() {
 
   // CRUD Methods
   const addPainting = ( paintingAdded ) => {
+    const postRequest = {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify( paintingAdded )
+    };
+    const fetchCall = async () => {
+      const newPainting = await ( await fetch("http://localhost:5000/paintings", postRequest)).json();
+      console.log( newPainting );
+    };
+
+    fetchCall();
+    
     const paintingsArrCopy = [...paintingsArray, paintingAdded];
     setPaintingsArray( paintingsArrCopy );
   };
 
+
   const deletePainting = ( paintingDeleted ) => {
+    const postRequest = {
+      method: "DELETE",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify( paintingDeleted )
+    };
+    const fetchCall = async () => {
+      const deletedPainting = await ( await fetch(`http://localhost:5000/paintings/${paintingDeleted._id}`, postRequest)).json();
+      console.log( deletedPainting );
+    };
+
+    fetchCall();
+
     const paintingsArrCopy = paintingsArray.filter(item => {
       return item._id !== paintingDeleted._id 
     });
