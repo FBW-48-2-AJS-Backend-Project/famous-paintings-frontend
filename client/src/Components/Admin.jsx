@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import PaintingContext from '../Context/PaintingContext';
 import PaintingItem from '../Components/PaintingItem';
 import Search from './Search';
+import AddPainting from './AddPainting';
 
 const Admin = () => {
     const { paintingsArray, setPaintingsArray, painting, setPainting, togglePainting, setTogglePainting, paintingsSearch, reset } = useContext( PaintingContext );
@@ -15,6 +16,7 @@ const Admin = () => {
         <div>
             <h2>Admin Page</h2>
             <Search/>
+            <AddPainting/>
             <ul>
                 {reset ? paintingsArray.map(item => {
                     return <li onClick={(e) => handleClick(item)}>

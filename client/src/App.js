@@ -18,7 +18,7 @@ function App() {
       setPaintingsArray( paintingData );
     };
     fetchData();
-  });
+  }, []);
 
   // CRUD Methods
   const addPainting = ( paintingAdded ) => {
