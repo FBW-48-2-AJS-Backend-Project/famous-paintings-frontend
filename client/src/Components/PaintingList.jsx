@@ -18,11 +18,11 @@ const PaintingList = () => {
             <Search/>
             <ul>
                 {reset ? paintingsArray.map(item => {
-                    return <li onClick={(e) => handleClick(item)}>
+                    return <li key={item._id} onClick={(e) => handleClick(item)}>
                         <p><strong>{item.title}</strong> by {item.artist}</p>
                     </li>
                 }) : paintingsSearch.map(item => {
-                    return <li onClick={(e) => handleClick(item)}>
+                    return <li key={item._id} onClick={(e) => handleClick(item)}>
                         <p><strong>{item.title}</strong> by {item.artist}</p>
                     </li>
                 })}

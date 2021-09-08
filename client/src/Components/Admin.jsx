@@ -5,12 +5,16 @@ import Search from './Search';
 import AddPainting from './AddPainting';
 
 const Admin = () => {
-    const { paintingsArray, setPaintingsArray, painting, setPainting, togglePainting, setTogglePainting, paintingsSearch, reset } = useContext( PaintingContext );
+    const { paintingsArray, setPaintingsArray, painting, setPainting, togglePainting, setTogglePainting, paintingsSearch, reset, deletePainting } = useContext( PaintingContext );
 
     const handleClick = (item) => {
         setPainting(item);
         setTogglePainting(true);
     };
+
+    const handleDelete = (item) => {
+        deletePainting(item);
+    }
 
     return (
         <div>
@@ -19,12 +23,14 @@ const Admin = () => {
             <AddPainting/>
             <ul>
                 {reset ? paintingsArray.map(item => {
-                    return <li onClick={(e) => handleClick(item)}>
+                    return <li key={item._id} onClick={(e) => handleClick(item)}>
                         <p><strong>{item.title}</strong> by {item.artist}</p>
+                        <button onClick={() => handleDelete(item)}>Delete</button>
                     </li>
                 }) : paintingsSearch.map(item => {
-                    return <li onClick={(e) => handleClick(item)}>
+                    return <li key={item._id} onClick={(e) => handleClick(item)}>
                         <p><strong>{item.title}</strong> by {item.artist}</p>
+                        <button onClick={() => handleDelete(item)}>Delete</button>
                     </li>
                 })}
                 {togglePainting ? <PaintingItem painting={ painting } setTogglePainting={ setTogglePainting }/> : null}
