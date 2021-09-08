@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import PaintingContext from '../Context/PaintingContext';
-import PaintingItem from '../Components/PaintingItem';
+import EditItem from '../Components/EditItem';
 import Search from './Search';
 import AddPainting from './AddPainting';
 
@@ -33,7 +33,7 @@ const Admin = () => {
                         <button onClick={() => handleDelete(item)}>Delete</button>
                     </li>
                 })}
-                {togglePainting ? <PaintingItem painting={ painting } setTogglePainting={ setTogglePainting }/> : null}
+                {togglePainting ? <EditItem painting={ painting } setTogglePainting={ setTogglePainting }/> : null}
             </ul>
         </div>
     )

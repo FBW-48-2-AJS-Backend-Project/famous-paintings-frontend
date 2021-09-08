@@ -8,10 +8,10 @@ const AddPainting = () => {
         artist: "",
         year: "",
         price: "",
-        cover: "",
+        cover: ""
     });
 
-    const handleSubmit = ( e ) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         addPainting( newPainting );
     };
