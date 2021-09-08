@@ -5,7 +5,7 @@ const PaintingItem = ({ painting, setTogglePainting }) => {
     return (
         <div>
             <h3>{painting.title}</h3>
-            <img src={painting.img} alt={painting.title} />
+            <img src={painting.cover} alt={painting.title} />
             <p>{painting.artist}</p>
             <p>Year: {painting.year}</p>
             <p>Price: {painting.price}</p>

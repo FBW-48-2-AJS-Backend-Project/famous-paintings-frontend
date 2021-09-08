@@ -7,30 +7,10 @@ import PaintingContext from './Context/PaintingContext';
 
 function App() {
   const [paintingsArray, setPaintingsArray] = useState([]);
-
-  // const dummyPaintings = [
-  //   {
-  //     title: "Mona Lisa",
-  //     artist: "Leonardo da Vinci",
-  //     year: 1503,
-  //     price: "100 Million",
-  //     img: "imageurl"
-  //   },
-  //   {
-  //     title: "Water Lilies",
-  //     artist: "Claude Monet",
-  //     year: 1920,
-  //     price: "20 Million",
-  //     img: "imageurl"
-  //   },
-  //   {
-  //     title: "The Scream",
-  //     artist: "Edvard Munch",
-  //     year: 1893,
-  //     price: "119 Million",
-  //     img: "imageurl"
-  //   }
-  // ];
+  const [painting, setPainting] = useState({});
+  const [togglePainting, setTogglePainting] = useState(false);
+  const [paintingsSearch, setPaintingsSearch] = useState([]);
+  const [reset, setReset] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
@@ -38,15 +18,45 @@ function App() {
       setPaintingsArray( paintingData );
     };
     fetchData();
-  });
+  }, []);
 
   // CRUD Methods
   const addPainting = ( paintingAdded ) => {
+    // define request options
+    const postRequest = {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify( paintingAdded )
+    };
+    // make fetch call using above defined options
+    const fetchCall = async () => {
+      const newPainting = await ( await fetch("http://localhost:5000/paintings", postRequest)).json();
+      console.log( newPainting );
+    };
+
+    fetchCall();
+    
+    // assign newly created painting to the state/context
     const paintingsArrCopy = [...paintingsArray, paintingAdded];
     setPaintingsArray( paintingsArrCopy );
   };
 
+
   const deletePainting = ( paintingDeleted ) => {
+    // define request options
+    const deleteRequest = {
+      method: "DELETE",
+      headers: {"Content-Type": "application/json"}
+    };
+    // make fetch call using above defined options
+    const fetchCall = async () => {
+      const deletedPainting = await ( await fetch(`http://localhost:5000/paintings/${paintingDeleted._id}`, deleteRequest)).json();
+      console.log( deletedPainting );
+    };
+
+    fetchCall();
+
+    // filter deleted painting from the state/context
     const paintingsArrCopy = paintingsArray.filter(item => {
       return item._id !== paintingDeleted._id 
     });
@@ -54,13 +64,31 @@ function App() {
   };
 
   const updatePainting = ( paintingUpdated ) => {
+    console.log("this is updated -->", paintingUpdated);
     
+    // define request options
+    const putRequest = {
+      method: "PUT",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify( paintingUpdated )
+    };
+    // make fetch call using above defined options
+    const fetchCall = async () => {
+      const updatedPainting = await ( await fetch(`http://localhost:5000/paintings/${paintingUpdated._id}`, putRequest)).json();
+      console.log( updatedPainting );
+    };
+
+    fetchCall();
+    
+    // update the painting in the state/context
+    const paintingsArrCopy = paintingsArray.map(item => item._id === paintingUpdated._id ? paintingUpdated : item);
+    
+    setPaintingsArray( paintingsArrCopy );
   };
 
-  console.log(paintingsArray);
 
   return (
-    <PaintingContext.Provider value={{ paintingsArray, setPaintingsArray, addPainting, deletePainting }}>
+    <PaintingContext.Provider value={{ paintingsArray, setPaintingsArray, addPainting, deletePainting, painting, setPainting, togglePainting, setTogglePainting, paintingsSearch, setPaintingsSearch, reset, setReset, updatePainting }}>
       
         <Router>
           <Switch>

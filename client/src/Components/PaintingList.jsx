@@ -1,33 +1,28 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import PaintingContext from '../Context/PaintingContext';
 import PaintingItem from '../Components/PaintingItem';
 import Search from './Search';
 
 const PaintingList = () => {
-    const { paintingsArray } = useContext( PaintingContext );
-    const [painting, setPainting] = useState({});
-    const [togglePainting, setTogglePainting] = useState(false);
-    const [paintingsSearch, setPaintingsSearch] = useState([]);
-    const [reset, setReset] = useState(true);
+    const { paintingsArray, painting, setPainting, togglePainting, setTogglePainting, paintingsSearch, reset } = useContext( PaintingContext );
 
-    console.log(painting);
 
     const handleClick = (item) => {
         setPainting(item);
         setTogglePainting(true);
-    }
+    };
 
     return (
         <div>
             <h2>Paintings List</h2>
-            <Search paintingsSearch={ paintingsSearch } setPaintingsSearch={ setPaintingsSearch } reset={ reset } setReset={ setReset } />
+            <Search/>
             <ul>
                 {reset ? paintingsArray.map(item => {
-                    return <li onClick={(e) => handleClick(item)}>
+                    return <li key={item._id} onClick={(e) => handleClick(item)}>
                         <p><strong>{item.title}</strong> by {item.artist}</p>
                     </li>
                 }) : paintingsSearch.map(item => {
-                    return <li onClick={(e) => handleClick(item)}>
+                    return <li key={item._id} onClick={(e) => handleClick(item)}>
                         <p><strong>{item.title}</strong> by {item.artist}</p>
                     </li>
                 })}

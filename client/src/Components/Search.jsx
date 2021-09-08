@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react';
 import PaintingContext from '../Context/PaintingContext';
 
-const Search = ({ paintingsSearch, setPaintingsSearch, reset, setReset }) => {
-    const { paintingsArray } = useContext( PaintingContext );
+const Search = () => {
+    const { paintingsArray, paintingsSearch, setPaintingsSearch, reset, setReset } = useContext( PaintingContext );
     const [query, setQuery] = useState("");
 
     const handleChange = e => {
