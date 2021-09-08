@@ -4,18 +4,13 @@ import PaintingItem from '../Components/PaintingItem';
 import Search from './Search';
 
 const PaintingList = () => {
-    const { paintingsArray } = useContext( PaintingContext );
-    const [painting, setPainting] = useState({});
-    const [togglePainting, setTogglePainting] = useState(false);
-    const [paintingsSearch, setPaintingsSearch] = useState([]);
-    const [reset, setReset] = useState(true);
+    const { paintingsArray, painting, setPainting, togglePainting, setTogglePainting, paintingsSearch, setPaintingsSearch, reset, setReset} = useContext( PaintingContext );
 
-    console.log(painting);
 
     const handleClick = (item) => {
         setPainting(item);
         setTogglePainting(true);
-    }
+    };
 
     return (
         <div>
