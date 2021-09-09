@@ -5,7 +5,7 @@ import "../Styles/paintingList.css";
 import Search from './Search';
 
 const PaintingList = () => {
-    const { paintingsArray, painting, setPainting, togglePainting, setTogglePainting, paintingsSearch, reset } = useContext( PaintingContext );
+    const { paintingsArray, painting, setPainting, togglePainting, setTogglePainting, paintingsSearch, reset, cart, setCart, addToCart } = useContext( PaintingContext );
 
 
     const handleClick = (item) => {
@@ -13,7 +13,10 @@ const PaintingList = () => {
         setTogglePainting(true);
     };
 
+    console.log(cart);
+
     return (
+
         <div className="main-flex-container">
             <div className="painting-list-container">
                 <h2>Paintings List</h2>
@@ -31,7 +34,6 @@ const PaintingList = () => {
                 </ul>
             </div>                
             <div>{togglePainting ? <PaintingItem painting={ painting } setTogglePainting={ setTogglePainting }/> : null}</div>
-
         </div>
     )
 }

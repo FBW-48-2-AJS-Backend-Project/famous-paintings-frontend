@@ -4,6 +4,7 @@ import EditItem from '../Components/EditItem';
 import Search from './Search';
 import AddPainting from './AddPainting';
 import '../Styles/admin.css';
+import Navbar from './Navbar';
 
 const Admin = () => {
     const { paintingsArray, setPaintingsArray, painting, setPainting, togglePainting, setTogglePainting, paintingsSearch, reset, deletePainting } = useContext( PaintingContext );
@@ -14,16 +15,23 @@ const Admin = () => {
     };
 
     const handleDelete = (item) => {
+        alert("Do you really want to delete this painting?");
         deletePainting(item);
     }
 
     return (
         <div>
             <h2>Admin Page</h2>
+
             <div className="admin-form-container">
                 <div className="admin-search"><Search/></div>
                 <div className="add-painting"><AddPainting/></div>
             </div>
+
+            <Navbar/>
+            <Search/>
+            <AddPainting/>
+
             <ul>
                 {reset ? paintingsArray.map(item => {
                     return <li key={item._id} onClick={(e) => handleClick(item)}>
