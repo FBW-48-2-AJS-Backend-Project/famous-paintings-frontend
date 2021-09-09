@@ -3,6 +3,7 @@ import PaintingContext from '../Context/PaintingContext';
 import EditItem from '../Components/EditItem';
 import Search from './Search';
 import AddPainting from './AddPainting';
+import '../Styles/admin.css';
 
 const Admin = () => {
     const { paintingsArray, setPaintingsArray, painting, setPainting, togglePainting, setTogglePainting, paintingsSearch, reset, deletePainting } = useContext( PaintingContext );
@@ -19,8 +20,10 @@ const Admin = () => {
     return (
         <div>
             <h2>Admin Page</h2>
-            <Search/>
-            <AddPainting/>
+            <div className="admin-form-container">
+                <div className="admin-search"><Search/></div>
+                <div className="add-painting"><AddPainting/></div>
+            </div>
             <ul>
                 {reset ? paintingsArray.map(item => {
                     return <li key={item._id} onClick={(e) => handleClick(item)}>

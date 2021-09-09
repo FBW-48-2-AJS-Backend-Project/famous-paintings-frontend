@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import PaintingContext from '../Context/PaintingContext';
+import '../Styles/addPainting.css';
 
 const AddPainting = () => {
     const { addPainting } = useContext( PaintingContext );
@@ -17,7 +18,7 @@ const AddPainting = () => {
     };
 
     return (
-        <div>
+        <div className='add-painting-form-container'>
             <h3>Add a Painting</h3>
 
             <form onSubmit={(e) => handleSubmit(e)}>

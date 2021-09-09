@@ -1,0 +1,13 @@
+/* h3{
+    font-family: 'Kaisei Decol', serif;
+} */
+
+.add-painting-form-container{
+    border: 1px solid black;
+    margin: auto; 
+    /* display: flex;
+    flex-direction: row; */
+    justify-content: space-evenly;
+    padding: 5px;
+    padding-top: 25px;
+}

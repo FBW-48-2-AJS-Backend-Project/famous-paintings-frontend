@@ -1,0 +1,22 @@
+.painting-item-div{
+    padding: 5%;
+    width: 50vw;
+}
+
+.img-div{
+    height: 500px;
+    margin: auto;
+}
+
+img{
+    object-fit: cover;
+    height: 450px;
+    margin: auto;
+}
+
+button{
+    background-color: peru;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}

@@ -1,10 +1,16 @@
 h1 {
-  background-color: lightgray;
+  /* font-family: 'Kaisei Decol', serif; */
+  /* background-color: rgb(252, 245, 245); */
   color: peru;
-  border-radius: 15px;
-  width: 36rem;
+  text-shadow: 0.5px 0.5px black;
+  /* font-size: larger; */
+  /* border-radius: 15px; */
+  width: 95%;
+  /* 36rem; */
   margin-left: 40rem;
   text-align: center;
   padding: 1rem;
-  margin-top: 20px;
+  margin: 20px auto;
+  margin-top: 0px;
+  border-bottom: 1px solid rgb(126, 125, 125);
 }

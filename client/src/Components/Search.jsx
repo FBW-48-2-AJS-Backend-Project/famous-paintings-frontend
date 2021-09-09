@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import PaintingContext from '../Context/PaintingContext';
+import'../Styles/search.css';
 
 const Search = () => {
     const { paintingsArray, paintingsSearch, setPaintingsSearch, reset, setReset } = useContext( PaintingContext );
@@ -21,7 +22,7 @@ const Search = () => {
     };
     
     return (
-        <form onSubmit={(e) => handleSubmit(e)}>
+        <form onSubmit={(e) => handleSubmit(e)} className='search-form'>
             <label htmlFor="paintingSearch">Search by Artist: </label>
             <input onChange={(e) => handleChange(e)} type="text" name="paintingSearch" id="paintingSearch" value={ query }/>
             <input type="submit" value="Search" />
