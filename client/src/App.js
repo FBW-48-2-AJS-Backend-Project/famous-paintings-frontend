@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 import Admin from './Components/Admin';
 import Home from './Components/Home';
+import Cart from './Components/Cart';
 import PaintingContext from './Context/PaintingContext';
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
   const [togglePainting, setTogglePainting] = useState(false);
   const [paintingsSearch, setPaintingsSearch] = useState([]);
   const [reset, setReset] = useState(true);
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -20,7 +22,7 @@ function App() {
     fetchData();
   }, []);
 
-  // CRUD Methods
+  // CRUD Methods Paintings -------------------------
   const addPainting = ( paintingAdded ) => {
     // define request options
     const postRequest = {
@@ -85,14 +87,36 @@ function App() {
     
     setPaintingsArray( paintingsArrCopy );
   };
+  // -------------------------------------------
+
+  // CRUD Methods Cart -------------------------
+  const addToCart = (cartItem) => {
+    // define request options
+    const postRequest = {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify( {paintings: [...cart, cartItem]} )
+    };
+    // make fetch call using above defined options
+    const fetchCall = async () => {
+      const newItem = await ( await fetch("http://localhost:5000/cart", postRequest)).json();
+      console.log( newItem );
+    };
+
+    fetchCall();
+
+    const cartCopy = [...cart, cartItem];
+    setCart( cartCopy );
+  };
 
 
   return (
-    <PaintingContext.Provider value={{ paintingsArray, setPaintingsArray, addPainting, deletePainting, painting, setPainting, togglePainting, setTogglePainting, paintingsSearch, setPaintingsSearch, reset, setReset, updatePainting }}>
+    <PaintingContext.Provider value={{ paintingsArray, setPaintingsArray, addPainting, deletePainting, painting, setPainting, togglePainting, setTogglePainting, paintingsSearch, setPaintingsSearch, reset, setReset, updatePainting, cart, setCart, addToCart }}>
       
         <Router>
           <Switch>
-            <Route path="/" exact component= { Home }/>
+            <Route path="/" exact component={ Home }/>
+            <Route path="/cart" exact component={ Cart }/>
             <Route path="/admin" component={ Admin }/>
           </Switch>
         </Router>
