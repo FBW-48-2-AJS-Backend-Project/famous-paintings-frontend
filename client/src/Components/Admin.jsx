@@ -13,6 +13,7 @@ const Admin = () => {
     };
 
     const handleDelete = (item) => {
+        alert("Do you really want to delete this painting?");
         deletePainting(item);
     }
 

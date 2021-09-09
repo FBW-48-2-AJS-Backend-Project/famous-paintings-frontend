@@ -22,7 +22,7 @@ function App() {
     fetchData();
   }, []);
 
-  // CRUD Methods
+  // CRUD Methods Paintings -------------------------
   const addPainting = ( paintingAdded ) => {
     // define request options
     const postRequest = {
@@ -87,10 +87,31 @@ function App() {
     
     setPaintingsArray( paintingsArrCopy );
   };
+  // -------------------------------------------
+
+  // CRUD Methods Cart -------------------------
+  const addToCart = (cartItem) => {
+    // define request options
+    const postRequest = {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify( {paintings: [...cart, cartItem]} )
+    };
+    // make fetch call using above defined options
+    const fetchCall = async () => {
+      const newItem = await ( await fetch("http://localhost:5000/cart", postRequest)).json();
+      console.log( newItem );
+    };
+
+    fetchCall();
+
+    const cartCopy = [...cart, cartItem];
+    setCart( cartCopy );
+  };
 
 
   return (
-    <PaintingContext.Provider value={{ paintingsArray, setPaintingsArray, addPainting, deletePainting, painting, setPainting, togglePainting, setTogglePainting, paintingsSearch, setPaintingsSearch, reset, setReset, updatePainting, cart, setCart }}>
+    <PaintingContext.Provider value={{ paintingsArray, setPaintingsArray, addPainting, deletePainting, painting, setPainting, togglePainting, setTogglePainting, paintingsSearch, setPaintingsSearch, reset, setReset, updatePainting, cart, setCart, addToCart }}>
       
         <Router>
           <Switch>

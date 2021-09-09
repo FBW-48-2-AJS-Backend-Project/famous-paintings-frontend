@@ -4,16 +4,12 @@ import PaintingItem from '../Components/PaintingItem';
 import Search from './Search';
 
 const PaintingList = () => {
-    const { paintingsArray, painting, setPainting, togglePainting, setTogglePainting, paintingsSearch, reset, cart, setCart } = useContext( PaintingContext );
+    const { paintingsArray, painting, setPainting, togglePainting, setTogglePainting, paintingsSearch, reset, cart, setCart, addToCart } = useContext( PaintingContext );
 
 
     const handleClick = (item) => {
         setPainting(item);
         setTogglePainting(true);
-    };
-
-    const addToCart = (item) => {
-        setCart([...cart, item]);
     };
 
     console.log(cart);
