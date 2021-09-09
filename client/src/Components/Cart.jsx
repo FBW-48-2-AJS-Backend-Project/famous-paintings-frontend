@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import PaintingContext from '../Context/PaintingContext';
+import Navbar from './Navbar';
 
 const Cart = () => {
     const { cart, setCart } = useContext( PaintingContext );
@@ -8,6 +9,7 @@ const Cart = () => {
     return (
         <div>
             <h2>This is the Cart</h2>
+            <Navbar/> 
             <ul>
                 {cart.map(item => {
                     return <li key={item._id}>

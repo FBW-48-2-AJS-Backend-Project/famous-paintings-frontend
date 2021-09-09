@@ -3,6 +3,7 @@ import PaintingContext from '../Context/PaintingContext';
 import EditItem from '../Components/EditItem';
 import Search from './Search';
 import AddPainting from './AddPainting';
+import Navbar from './Navbar';
 
 const Admin = () => {
     const { paintingsArray, setPaintingsArray, painting, setPainting, togglePainting, setTogglePainting, paintingsSearch, reset, deletePainting } = useContext( PaintingContext );
@@ -20,6 +21,7 @@ const Admin = () => {
     return (
         <div>
             <h2>Admin Page</h2>
+            <Navbar/>
             <Search/>
             <AddPainting/>
             <ul>
