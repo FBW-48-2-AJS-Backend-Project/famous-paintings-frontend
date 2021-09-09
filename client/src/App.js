@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 import Admin from './Components/Admin';
 import Home from './Components/Home';
+import Cart from './Components/Cart';
 import PaintingContext from './Context/PaintingContext';
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
   const [togglePainting, setTogglePainting] = useState(false);
   const [paintingsSearch, setPaintingsSearch] = useState([]);
   const [reset, setReset] = useState(true);
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -88,11 +90,12 @@ function App() {
 
 
   return (
-    <PaintingContext.Provider value={{ paintingsArray, setPaintingsArray, addPainting, deletePainting, painting, setPainting, togglePainting, setTogglePainting, paintingsSearch, setPaintingsSearch, reset, setReset, updatePainting }}>
+    <PaintingContext.Provider value={{ paintingsArray, setPaintingsArray, addPainting, deletePainting, painting, setPainting, togglePainting, setTogglePainting, paintingsSearch, setPaintingsSearch, reset, setReset, updatePainting, cart, setCart }}>
       
         <Router>
           <Switch>
-            <Route path="/" exact component= { Home }/>
+            <Route path="/" exact component={ Home }/>
+            <Route path="/cart" exact component={ Cart }/>
             <Route path="/admin" component={ Admin }/>
           </Switch>
         </Router>
