@@ -22,15 +22,12 @@ const Admin = () => {
     return (
         <div>
             <h2>Admin Page</h2>
-
+            <Navbar/>
+            
             <div className="admin-form-container">
                 <div className="admin-search"><Search/></div>
                 <div className="add-painting"><AddPainting/></div>
             </div>
-
-            <Navbar/>
-            <Search/>
-            <AddPainting/>
 
             <ul>
                 {reset ? paintingsArray.map(item => {
