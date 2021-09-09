@@ -1,0 +1,14 @@
+.search-form{
+    /* border-radius: 5px;
+    border: blueviolet 2px solid;
+    width: 35%;
+    display: flex; */
+    margin-top: 5%;
+    background-color: peru;
+    padding: 2%;
+}
+
+.search-form input{
+    margin: 2px;
+    padding: 2px 5px;
+}

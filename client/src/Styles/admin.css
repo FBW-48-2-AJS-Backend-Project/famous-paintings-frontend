@@ -1,0 +1,36 @@
+h2{
+    margin: auto;
+    text-align: center;
+    margin: 20px;
+}
+
+/* .form-container{
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+} */
+
+.admin-form-container{
+    display: flex;
+}
+
+.admin-search{
+    width: 30%;
+}
+
+.add-painting{
+    width: 60%;
+}
+
+ul{
+    padding: 5px;
+}
+li{
+    margin: 5px;
+    width: 100%;
+}
+
+/* p, button{
+    display: inline-block;
+} */

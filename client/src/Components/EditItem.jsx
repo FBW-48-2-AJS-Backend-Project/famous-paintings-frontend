@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import PaintingContext from '../Context/PaintingContext';
+import '../Styles/editItem.css';
 
 const EditItem = ({ painting, setTogglePainting }) => {
     const { updatePainting } = useContext( PaintingContext );
