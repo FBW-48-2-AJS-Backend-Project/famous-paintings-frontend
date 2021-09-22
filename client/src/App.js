@@ -5,6 +5,7 @@ import Admin from './Components/Admin';
 import Home from './Components/Home';
 import Cart from './Components/Cart';
 import PaintingContext from './Context/PaintingContext';
+import Login from './Components/Login';
 
 function App() {
   const [paintingsArray, setPaintingsArray] = useState([]);
@@ -13,6 +14,7 @@ function App() {
   const [paintingsSearch, setPaintingsSearch] = useState([]);
   const [reset, setReset] = useState(true);
   const [cart, setCart] = useState([]);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -42,7 +44,6 @@ function App() {
     const paintingsArrCopy = [...paintingsArray, paintingAdded];
     setPaintingsArray( paintingsArrCopy );
   };
-
 
   const deletePainting = ( paintingDeleted ) => {
     // define request options
@@ -90,34 +91,34 @@ function App() {
   // -------------------------------------------
 
   // CRUD Methods Cart -------------------------
-  const addToCart = (cartItem) => {
-    // define request options
-    const postRequest = {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify( {paintings: [...cart, cartItem]} )
-    };
-    // make fetch call using above defined options
-    const fetchCall = async () => {
-      const newItem = await ( await fetch("http://localhost:5000/cart", postRequest)).json();
-      console.log( newItem );
-    };
+  // const addToCart = (cartItem) => {
+  //   // define request options
+  //   const postRequest = {
+  //     method: "POST",
+  //     headers: {"Content-Type": "application/json"},
+  //     body: JSON.stringify( {paintings: [...cart, cartItem]} )
+  //   };
+  //   // make fetch call using above defined options
+  //   const fetchCall = async () => {
+  //     const newItem = await ( await fetch("http://localhost:5000/cart", postRequest)).json();
+  //     console.log( newItem );
+  //   };
 
-    fetchCall();
+  //   fetchCall();
 
-    const cartCopy = [...cart, cartItem];
-    setCart( cartCopy );
-  };
-
+  //   const cartCopy = [...cart, cartItem];
+  //   setCart( cartCopy );
+  // };
 
   return (
-    <PaintingContext.Provider value={{ paintingsArray, setPaintingsArray, addPainting, deletePainting, painting, setPainting, togglePainting, setTogglePainting, paintingsSearch, setPaintingsSearch, reset, setReset, updatePainting, cart, setCart, addToCart }}>
+    <PaintingContext.Provider value={{ paintingsArray, setPaintingsArray, addPainting, deletePainting, painting, setPainting, togglePainting, setTogglePainting, paintingsSearch, setPaintingsSearch, reset, setReset, updatePainting, user, setUser }}>
       
         <Router>
           <Switch>
             <Route path="/" exact component={ Home }/>
             <Route path="/cart" exact component={ Cart }/>
             <Route path="/admin" component={ Admin }/>
+            <Route path="/login" component={ Login }/>
           </Switch>
         </Router>
       

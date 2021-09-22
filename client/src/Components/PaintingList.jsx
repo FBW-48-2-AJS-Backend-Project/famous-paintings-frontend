@@ -25,10 +25,12 @@ const PaintingList = () => {
                     {reset ? paintingsArray.map(item => {
                         return <li key={item._id} onClick={(e) => handleClick(item)}>
                             <p><strong>{item.title}</strong> by {item.artist}</p>
+                            <button onClick={(e) => addToCart(item)}>Add Painting to Cart</button>
                         </li>
                     }) : paintingsSearch.map(item => {
                         return <li key={item._id} onClick={(e) => handleClick(item)}>
                             <p><strong>{item.title}</strong> by {item.artist}</p>
+                            <button onClick={(e) => addToCart(item)}>Add Painting to Cart</button>
                         </li>
                     })}
                 </ul>
